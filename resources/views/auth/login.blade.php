@@ -7,7 +7,7 @@
     </style>
 @endsection
 @section('title')
-        智慧
+        财务
 @endsection
 @section('content')
     <form class="form-signin" method="post">

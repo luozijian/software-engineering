@@ -8,7 +8,7 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>智慧</title>
+    <title>财务</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
             <!--logo start-->
-            <a href="/admin" class="logo">智慧<span>后台</span></a>
+            <a href="/admin" class="logo">财务<span>后台</span></a>
             <!--logo end-->
 
             <div class="top-nav ">
@@ -79,7 +79,7 @@
                                  width="29" alt="管理员头像"/>
                         <span class="username">
                             @if (Auth::guest())
-                                智慧
+                                财务
                             @else
                                 {!! Auth::user()->name !!}
                             @endif
@@ -130,7 +130,7 @@
         <!--footer end-->
         @else
             <header class="header white-bg">
-                <a href="javascript:" class="logo">智慧<span>后台</span></a>
+                <a href="javascript:" class="logo">财务<span>后台</span></a>
             </header>
             <section id="main-content">
                 <section class="wrapper site-min-height">

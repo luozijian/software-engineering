@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => 'haohaoloveyoyo1221@qq.com',
-        'name'    => '【智慧财务】',
+        'name'    => '【财务财务】',
     ],
 
     /*
