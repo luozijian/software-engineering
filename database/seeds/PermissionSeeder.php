@@ -65,19 +65,7 @@ class PermissionSeeder extends Seeder
         $permission->save();
         $admin->attachPermission($permission);
 
-        $permission = new Permission();
-        $permission->name         = 'ProductController@import';
-        $permission->display_name = '【2】产品导入'; // optional
-        $permission->description  = '【6】产品'; // optional
-        $permission->save();
-        $admin->attachPermission($permission);
 
-        $permission = new Permission();
-        $permission->name         = 'ProductController@export';
-        $permission->display_name = '【3】产品导出'; // optional
-        $permission->description  = '【6】产品'; // optional
-        $permission->save();
-        $admin->attachPermission($permission);
 
         $permission = new Permission();
         $permission->name         = 'ProductController@show';
@@ -108,26 +96,6 @@ class PermissionSeeder extends Seeder
         $permission->save();
         $admin->attachPermission($permission);
 
-        $permission = new Permission();
-        $permission->name         = 'PolicyController@import';
-        $permission->display_name = '【2】单据录入'; // optional
-        $permission->description  = '【8】单据'; // optional
-        $permission->save();
-        $admin->attachPermission($permission);
-
-        $permission = new Permission();
-        $permission->name         = 'PolicyController@review';
-        $permission->display_name = '【3】单据审批'; // optional
-        $permission->description  = '【8】单据'; // optional
-        $permission->save();
-        $admin->attachPermission($permission);
-
-        $permission = new Permission();
-        $permission->name         = 'PolicyController@release-storeReleaseRecord';
-        $permission->display_name = '【4】单据发放佣金'; // optional
-        $permission->description  = '【8】单据'; // optional
-        $permission->save();
-        $admin->attachPermission($permission);
 
         $permission = new Permission();
         $permission->name         = 'PolicyController@destroy';
@@ -144,12 +112,7 @@ class PermissionSeeder extends Seeder
         $admin->attachPermission($permission);
         $employee->attachPermission($permission);
 
-        $permission = new Permission();
-        $permission->name         = 'PolicyController@renewal';
-        $permission->display_name = '【7】单据续费'; // optional
-        $permission->description  = '【8】单据'; // optional
-        $permission->save();
-        $admin->attachPermission($permission);
+
 
     }
 }

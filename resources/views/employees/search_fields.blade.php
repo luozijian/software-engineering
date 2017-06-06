@@ -6,13 +6,8 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('name', '中文名字:') !!}
+            {!! Form::label('name', '姓名:') !!}
             {!! Form::text('name',\Request::get("name"), ['class' => 'form-control','data-role'=>'search-item','data-name'=>'name','data-express'=>'like']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('name', '英文名字:') !!}
-            {!! Form::text('english_name',\Request::get("english_name"), ['class' => 'form-control','data-role'=>'search-item','data-name'=>'english_name','data-express'=>'like']) !!}
         </div>
 
         <input type="hidden" name="search">
