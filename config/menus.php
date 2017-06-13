@@ -16,25 +16,25 @@ return [
             'action'=>'AdminController@index',
             'active'=>'admin'
         ],
-        [
-            'title'=>'权限管理',
-            'sub'=>[
-                [
-                    'title'=>'所有权限',
-                    'action'=>'\Ricoa\Auth\Controllers\PermissionController@index'
-                ],
-                [
-                    'title'=>'系统角色',
-                    'action'=>'\Ricoa\Auth\Controllers\RoleController@index'
-                ],
-                [
-                    'title'=>'用户角色',
-                    'action'=>'\Ricoa\Auth\Controllers\RoleUserController@index'
-                ],
-
-            ],
-            'active'=>'admin/auth*'
-        ],
+//        [
+//            'title'=>'权限管理',
+//            'sub'=>[
+//                [
+//                    'title'=>'所有权限',
+//                    'action'=>'\Ricoa\Auth\Controllers\PermissionController@index'
+//                ],
+//                [
+//                    'title'=>'系统角色',
+//                    'action'=>'\Ricoa\Auth\Controllers\RoleController@index'
+//                ],
+//                [
+//                    'title'=>'用户角色',
+//                    'action'=>'\Ricoa\Auth\Controllers\RoleUserController@index'
+//                ],
+//
+//            ],
+//            'active'=>'admin/auth*'
+//        ],
         [
             'title'=>'员工管理',
             'sub'=>[
@@ -54,38 +54,38 @@ return [
             ],
             'active'=>'admin/employees*'
         ],
-        [
-            'title'=>'产品管理',
-            'sub'=>[
-                [
-                    'title'=>'产品信息',
-                    'action'=>'ProductController@index',
-                ],
-
-            ],
-            'active'=>'admin/products*'
-        ],
-        [
-            'title'=>'单据管理',
-            'sub'=>[
-                [
-                    'title'=>'单据信息',
-                    'action'=>'PolicyController@index'
-                ],
-
-            ],
-            'active'=>'admin/policies*'
-        ],
-        [
-            'title'=>'业绩管理',
-            'sub'=>[
-                [
-                    'title'=>'员工业绩',
-                    'action'=>'PerformanceController@indexByEmployee',
-                ],
-            ],
-            'active'=>'admin/performances*'
-        ],
+//        [
+//            'title'=>'产品管理',
+//            'sub'=>[
+//                [
+//                    'title'=>'产品信息',
+//                    'action'=>'ProductController@index',
+//                ],
+//
+//            ],
+//            'active'=>'admin/products*'
+//        ],
+//        [
+//            'title'=>'单据管理',
+//            'sub'=>[
+//                [
+//                    'title'=>'单据信息',
+//                    'action'=>'PolicyController@index'
+//                ],
+//
+//            ],
+//            'active'=>'admin/policies*'
+//        ],
+//        [
+//            'title'=>'业绩管理',
+//            'sub'=>[
+//                [
+//                    'title'=>'员工业绩',
+//                    'action'=>'PerformanceController@indexByEmployee',
+//                ],
+//            ],
+//            'active'=>'admin/performances*'
+//        ],
     ],
 
     /**

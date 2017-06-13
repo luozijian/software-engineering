@@ -16,15 +16,10 @@ class EmployeeRepository extends BaseRepository
         'boss_name',
         'work_id',
         'name',
-        'english_name',
         'job',
         'job_point',
         'phone',
         'email',
-        'address',
-        'entered_at',
-        'professional_qualification',
-        'account'
     ];
 
     /**

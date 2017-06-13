@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @SWG\Definition(
  *      definition="Rank",
- *      required={"name", "job_point", "personal_performance_required", "team_performance_required", "total_performance"},
  *      @SWG\Property(
  *          property="id",
  *          description="id",
@@ -27,20 +26,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="float"
  *      ),
  *      @SWG\Property(
- *          property="personal_performance_required",
- *          description="personal_performance_required",
  *          type="integer",
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="team_performance_required",
- *          description="team_performance_required",
+ *          property="performance_required",
+ *          description="performance_required",
  *          type="integer",
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="total_performance",
- *          description="total_performance",
+     property="total_performance",
+     description="total_performance",
  *          type="integer",
  *          format="int32"
  *      )
@@ -59,9 +56,8 @@ class Rank extends Model
     public $fillable = [
         'name',
         'job_point',
-        'personal_performance_required',
-        'team_performance_required',
-        'total_performance'
+        'performance_required',
+        'performance'
     ];
 
     /**
@@ -72,9 +68,8 @@ class Rank extends Model
     protected $casts = [
         'name' => 'string',
         'job_point' => 'float',
-        'personal_performance_required' => 'integer',
-        'team_performance_required' => 'integer',
-        'total_performance' => 'integer'
+        'performance_required' => 'integer',
+        'performance' => 'integer'
     ];
 
     /**
@@ -85,8 +80,7 @@ class Rank extends Model
     public static $rules = [
         'name' => 'required',
         'job_point' => 'required',
-        'personal_performance_required' => 'required',
-        'team_performance_required' => 'required',
+        'performance_required' => 'required',
     ];
 
     /**** relationship ****/
@@ -151,26 +145,4 @@ class Rank extends Model
         return $result;
     }
 
-    public function getCondition2DisplayAttribute()
-    {
-        $result = '';
-        $condition2 = $this->condition2;
-        if($condition2){
-            foreach ($condition2 as $item){
-                if($item['description'] == 'job_point'){
-                    $result .= $item['count'].'个'.$item['rank'].' ';
-                }else{
-                    $result .= $item['rate'].'%'.' ';
-                }
-            }
-        }else{
-            $result = '无';
-        }
-        return $result;
-    }
-
-    public function getTypeNameAttribute()
-    {
-        return $this->type == Employee::TYPE_OF_PERSONAL ? '个人' : '团队';
-    }
 }

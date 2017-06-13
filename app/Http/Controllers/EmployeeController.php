@@ -69,12 +69,6 @@ class EmployeeController extends InfyOmBaseController
         //是否有上司
         if($input['boss_id']){
             $boss = $this->employeeRepository->findWithoutFail($input['boss_id']);
-
-            if ($message = $boss->canDevelopTeam()){
-                Flash::error($message);
-
-                return redirect(route('employees.create'))->withInput();
-            }
         }else{
             $input['boss_id'] = 0;
         }
@@ -170,11 +164,6 @@ class EmployeeController extends InfyOmBaseController
 
             $boss = $this->employeeRepository->findWithoutFail($input['boss_id']);
 
-            if ($message = $boss->canDevelopTeam()){
-                Flash::error($message);
-
-                return redirect(route('employees.edit',$id))->withInput();
-            }
         }else{
             $input['boss_id'] = 0;
         }

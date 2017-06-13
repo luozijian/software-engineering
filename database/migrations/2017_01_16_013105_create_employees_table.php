@@ -22,7 +22,6 @@ class CreateEmployeesTable extends Migration
             $table->string('name')->comment('中文名');
             $table->string('phone')->comment('电话');
             $table->string('email')->comment('邮箱');
-            $table->string('address')->comment('地址');
             $table->unsignedInteger('performance')->default(0)->comment('总业绩');
             $table->string('status')->default('on')->comment('off为离职，on为在职');
             $table->timestamps();

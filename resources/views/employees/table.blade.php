@@ -6,7 +6,6 @@
         <th>职级点</th>
         <th>联系电话</th>
         <th>Email</th>
-        <th>地址</th>
         <th>上司工号</th>
         <th>上司名字</th>
         <th>状态</th>
@@ -17,12 +16,10 @@
         <tr>
             <td>{!! $employee->work_id !!}</td>
             <td>{!! $employee->name !!}</td>
-            <td>{!! $employee->english_name !!}</td>
             <td>{!! $employee->rank->name !!}</td>
             <td>{!! $employee->job_point !!}</td>
             <td>{!! $employee->phone !!}</td>
             <td>{!! $employee->email !!}</td>
-            <td>{!! $employee->address !!}</td>
             <td>{!! $employee->boss_work_id !!}</td>
             <td>{!! $employee->boss_name !!}</td>
             @if($employee->isOn())
@@ -33,8 +30,8 @@
             <td>
                 {!! Form::open(['route' => ['employees.destroy', $employee->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('policies.index', ['searchFields'=>'policieable_id;policieable_type','search'=>$employee->id.';policieable_type:App\Models\Employee']) !!}" class='btn btn-success btn-xs'>保单</a>
-                    <a href="{!! route('performances.index', ['searchFields'=>'performanceable_id;performanceable_type','search'=>$employee->id.';performanceable_type:App\Models\Employee']) !!}" class='btn btn-send btn-xs'>业绩</a>
+                    <a href="{!! route('policies.index', ["search"=>$employee->id,"searchFields"=>"employee_id"]) !!}" class='btn btn-success btn-xs'>保单</a>
+                    <a href="{!! route('performances.index', ["search"=>$employee->id,"searchFields"=>"employee_id"]) !!}" class='btn btn-send btn-xs'>业绩</a>
                     @if($employee->isOn())
                         <a href="{!! route('employees.edit', [$employee->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                         {!! Form::button('<i class="glyphicon">离职</i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('是否确定离职?')"]) !!}
