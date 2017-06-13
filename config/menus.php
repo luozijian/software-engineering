@@ -46,13 +46,18 @@ return [
                     'title'=>'后台帐号',
                     'action'=>'UserController@index'
                 ],
-                [
-                    'title'=>'职级表',
-                    'action'=>'RankController@index'
-                ],
-
             ],
             'active'=>'admin/employees*'
+        ],
+        [
+            'title'=>'职级管理',
+            'sub' => [
+                [
+                    'title'=>'职级信息',
+                    'action'=>'RankController@index'
+                ],
+            ],
+            'active'=>'admin/employees/ranks*'
         ],
 //        [
 //            'title'=>'产品管理',
@@ -117,6 +122,7 @@ return [
         'PerformanceController@indexByEmployee',
         'PerformanceController@index',
         'PolicyController@index',
+        'UserController@index',
     ],
 
     'agent'=>\Ricoa\Auth\Agent\DefaultMenusAgent::class,
