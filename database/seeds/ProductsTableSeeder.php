@@ -70,7 +70,7 @@ class ProductsTableSeeder extends Seeder
             5 => 
             array (
                 'id' => 6,
-                'name' => '马来西亚一线城市房产投资计划',
+                'name' => '锤子手机',
                 'price' => 100,
                 'status' => 'off',
                 'created_at' => '2017-05-22 07:12:19',
@@ -80,7 +80,7 @@ class ProductsTableSeeder extends Seeder
             6 => 
             array (
                 'id' => 7,
-                'name' => '爱无忧-六年期',
+                'name' => '婴儿奶粉',
                 'price' => 100,
                 'status' => 'on',
                 'created_at' => '2017-05-22 07:23:27',
@@ -90,7 +90,7 @@ class ProductsTableSeeder extends Seeder
             7 => 
             array (
                 'id' => 8,
-                'name' => '马来西亚一线城市房产投资',
+                'name' => 'i watch',
                 'price' => 100,
                 'status' => 'on',
                 'created_at' => '2017-05-23 01:03:55',
