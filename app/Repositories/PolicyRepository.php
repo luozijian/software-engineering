@@ -11,8 +11,7 @@ class PolicyRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'policieable_id',
-        'policieable_type',
+        'employee_id',
         'client_name',
         'client_gender',
         'client_phone',

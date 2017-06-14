@@ -44,8 +44,7 @@ class ProductController extends InfyOmBaseController
         }
         $products = $this->productRepository->paginate(15);
 
-        return view('products.index')
-            ->with('products', $products);
+        return view('products.index')->with('products', $products);
     }
 
     /**
@@ -67,11 +66,7 @@ class ProductController extends InfyOmBaseController
      */
     public function store(CreateProductRequest $request)
     {
-        if($request->type == 'B'){
-            $input = $request->except('rate');
-        }else{
-            $input = $request->only('name','type','rate','begin_at');
-        }
+        $input = $request->all();
 
         $product = $this->productRepository->create($input);
 
@@ -138,18 +133,6 @@ class ProductController extends InfyOmBaseController
             Flash::error('找不到页面');
 
             return redirect(session('product_back_url',route('products.index')));
-        }
-
-        if($request->type == 'B'){
-            $input['rate'] = 0;
-        }else{
-            foreach ($input as &$item){
-                $item = null;
-            }
-            $input['name'] = $request->name;
-            $input['type'] = $request->type;
-            $input['rate'] = $request->rate;
-            $input['begin_at'] = $request->begin_at;
         }
 
         $product = $this->productRepository->update($input, $id);

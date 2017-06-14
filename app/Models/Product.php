@@ -62,14 +62,7 @@ class Product extends Model
 
     public $fillable = [
         'name',
-        'type',
-        'supplier',
-        'plan',
-        'year',
-        'year_period_count',
-        'year_period',
-        'rate',
-        'begin_at',
+        'price',
         'status',
     ];
 
@@ -96,8 +89,7 @@ class Product extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'type' => 'required',
-        'begin_at' => 'required',
+        'price' => 'required',
     ];
 
     /**** relationship ****/

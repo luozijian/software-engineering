@@ -141,9 +141,9 @@ class Performance extends Model
     ];
 
     /**** relationship ****/
-    public function performanceable()
+    public function employee()
     {
-        return $this->morphTo();
+        return $this->belongsTo(Employee::class);
     }
 
     public function policy()

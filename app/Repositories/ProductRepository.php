@@ -28,21 +28,4 @@ class ProductRepository extends BaseRepository
     {
         return Product::class;
     }
-
-    public function create(array $attribute)
-    {
-        \DB::beginTransaction();
-
-        $product = $this->model->create($attribute);
-
-        $channels = Channel::all();
-
-        $attribute['product_id'] = $product->id;
-        foreach ($channels as $key => $channel){
-
-            $channel->channelProducts()->create($attribute);
-        }
-
-        \DB::commit();
-    }
 }

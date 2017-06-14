@@ -12,8 +12,7 @@ class PerformanceRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'product_id',
-        'performanceable_id',
-        'performanceable_type',
+        'employee_id',
         'repay_amount',
         'repay_year',
         'repay_amount_year',

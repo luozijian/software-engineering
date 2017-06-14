@@ -13,8 +13,6 @@ class RankRepository extends BaseRepository
     protected $fieldSearchable = [
         'name',
         'job_point',
-        'personal_performance_required',
-        'team_performance_required',
         'total_performance'
     ];
 

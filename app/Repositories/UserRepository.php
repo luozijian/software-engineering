@@ -11,7 +11,7 @@ class UserRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'student_class_id',
+        'employee_id',
         'name'
     ];
 

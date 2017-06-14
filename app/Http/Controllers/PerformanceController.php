@@ -39,7 +39,7 @@ class PerformanceController extends InfyOmBaseController
     {
     	\Session::put("performance_back_url",$request->getRequestUri());
         $this->performanceRepository->pushCriteria(new RequestCriteria($request))->orderBy('id','desc');
-        $performances = $this->performanceRepository->with('performanceable')->paginate(15);
+        $performances = $this->performanceRepository->with('employee')->paginate(15);
 
         $signer = [];
         if(count($performances) > 0){
@@ -184,12 +184,8 @@ class PerformanceController extends InfyOmBaseController
                 $employee['team_performance'] = $employee->performances()->where('type','team')->whereBetween('created_at',[$input['start_at'],$input['end_at']])->sum('release_amount');
                 $employee['total_performance'] = $employee['personal_performance'] + $employee['team_performance'];
 
-                $employee['personal_commission'] = $employee->commissionReleaseRecords()->where('type','personal')->whereBetween('created_at',[$input['start_at'],$input['end_at']])->sum('release_amount');
-                $employee['team_commission'] = $employee->commissionReleaseRecords()->where('type','team')->whereBetween('created_at',[$input['start_at'],$input['end_at']])->sum('release_amount');
-                $employee['commission'] = $employee['personal_commission'] + $employee['team_commission'];
             }
         }
-        return view('performances.indexByEmployee')
-            ->with('employees', $employees);
+        return view('performances.indexByEmployee')->with('employees', $employees);
     }
 }

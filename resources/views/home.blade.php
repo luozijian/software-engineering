@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('style')
+    @parent
+    <link rel="stylesheet" href="/css/jquery.hotspot.css">
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -154,11 +159,7 @@
 
             });
 
-            var _pop2 = $('#tips').hotSpot({
-                slideshow : false,
-//                 triggerBy : 'click',
-                autoHide : false
-            });
+
 
         });
 

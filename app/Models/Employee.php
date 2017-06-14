@@ -161,7 +161,7 @@ class Employee extends Model
 
     public function performances()
     {
-        return $this->morphMany(Performance::class,'performanceable');
+        return $this->hasMany(Performance::class);
     }
 
 

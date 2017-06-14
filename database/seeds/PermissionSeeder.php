@@ -81,12 +81,6 @@ class PermissionSeeder extends Seeder
         $permission->save();
         $admin->attachPermission($permission);
 
-        $permission = new Permission();
-        $permission->description  = '【7】产品'; // optional
-        $permission->save();
-        $admin->attachPermission($permission);
-
-
 
         //订单管理
         $permission = new Permission();

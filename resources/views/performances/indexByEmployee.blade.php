@@ -58,7 +58,7 @@
                                 <td>{!! $employee->commission !!}</td>
                                 <td>
                                     <div class='btn-group'>
-                                        <a href="{!! route('performances.index',["search"=>$employee->id.";performanceable_type:App\Models\Employee","searchFields"=>"performanceable_id;performanceable_type"]) !!}" class="btn btn-primary btn-xs">查看业绩</a>
+                                        <a href="{!! route('performances.index',["search"=>$employee->id,"searchFields"=>"employee_id"]) !!}" class="btn btn-primary btn-xs">查看业绩</a>
                                     </div>
                                 </td>
                             </tr>
