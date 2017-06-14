@@ -40,10 +40,7 @@
                         <th>员工</th>
                         <th>员工工号</th>
                         <th>职级</th>
-                        <th>原始业绩</th>
-                        <th>个人业绩</th>
-                        <th>团队业绩</th>
-                        <th>佣金</th>
+                        <th>业绩</th>
                         <th colspan="3">操作</th>
                         </thead>
                         <tbody>
@@ -52,10 +49,7 @@
                                 <td>{!! $employee->name !!}</td>
                                 <td>{!! $employee->work_id !!}</td>
                                 <td>{!! $employee->job_point !!}</td>
-                                <td>{!! $employee->original_performance !!}</td>
-                                <td>{!! $employee->personal_performance !!}</td>
-                                <td>{!! $employee->team_performance !!}</td>
-                                <td>{!! $employee->commission !!}</td>
+                                <td>{!! $employee->performance !!}</td>
                                 <td>
                                     <div class='btn-group'>
                                         <a href="{!! route('performances.index',["search"=>$employee->id,"searchFields"=>"employee_id"]) !!}" class="btn btn-primary btn-xs">查看业绩</a>

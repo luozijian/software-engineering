@@ -41,12 +41,7 @@ class PerformanceController extends InfyOmBaseController
         $this->performanceRepository->pushCriteria(new RequestCriteria($request))->orderBy('id','desc');
         $performances = $this->performanceRepository->with('employee')->paginate(15);
 
-        $signer = [];
-        if(count($performances) > 0){
-            $signer = $performances[0]->performanceable;
-        }
-
-        return view('performances.index',compact('performances','signer'));
+        return view('performances.index',compact('performances'));
     }
 
     /**

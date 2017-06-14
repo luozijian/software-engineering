@@ -28,6 +28,7 @@ Route::group(["prefix"=>"admin"],function(){
         Route::resource('users', 'UserController');
     });
     Route::get('/common/bossName', 'AdminController@bossName')->name("admin.common.bossName");
+    Route::get('/common/signerName', 'AdminController@signerName')->name("admin.common.signerName");
     Route::resource('employees', 'EmployeeController');
 
     //产品管理

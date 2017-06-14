@@ -7,7 +7,6 @@
                 <header class="panel-heading">
                     业绩发放记录
                     <br><br>
-                    个人业绩（总）:{{ $signer->personal_performance or '' }} &nbsp;&nbsp;&nbsp; 团队业绩（总）:{{ $signer->team_performance or '' }}
                 </header>
                 <div class="panel-body">
                     @include('flash::message')

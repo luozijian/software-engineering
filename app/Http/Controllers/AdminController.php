@@ -31,4 +31,15 @@ class AdminController extends AppBaseController
         return \Response::json(compact('name'));
     }
 
+    public function signerName(Request $request)
+    {
+        $employee = Employee::where('work_id', $request->work_id)->first();
+
+        if ($employee && $employee->isOn()) {
+            $name = $employee->name;
+        }
+
+        return \Response::json(compact('name'));
+    }
+
 }

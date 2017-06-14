@@ -156,7 +156,7 @@ class Employee extends Model
 
     public function policies()
     {
-        return $this->morphMany(Policy::class,'policieable');
+        return $this->hasMany(Policy::class);
     }
 
     public function performances()

@@ -73,13 +73,6 @@ class Product extends Model
      */
     protected $casts = [
         'name' => 'string',
-        'type' => 'string',
-        'supplier' => 'string',
-        'plan' => 'string',
-        'year' => 'integer',
-        'year_period_count' => 'integer',
-        'year_period' => 'string',
-        'begin_at' => 'date'
     ];
 
     /**
@@ -93,11 +86,6 @@ class Product extends Model
     ];
 
     /**** relationship ****/
-    public function channelProducts()
-    {
-        return $this->hasMany(ChannelProduct::class);
-    }
-
     public function policies()
     {
         return $this->hasMany(Policy::class);
@@ -109,78 +97,9 @@ class Product extends Model
     }
 
     /**** function ****/
-    public function isTypeA()
-    {
-        return $this->type == 'A';
-    }
-
     public function isOpen()
     {
         return $this->status == 'on';
     }
 
-    //获取产品今年BV系数
-    public function getBVPointForNow($signer,$policy)
-    {
-        if($signer->isEmployee()){
-            $BV_point = $this->getRate($this->year_period,$policy);
-        }else{
-            $year_period = $this->channelProducts()->where('channel_id',$signer->id)->first()->year_period_array;
-            $BV_point = $this->getRate($year_period,$policy);
-        }
-        return $BV_point;
-    }
-
-    //获取产品系数总和
-    public function getBVPointSum($signer)
-    {
-        if($signer->isEmployee()){
-            $BV_point = $this->getSum($this->year_period);
-        }else{
-            $year_period = $this->channelProducts()->where('channel_id',$signer->id)->first()->year_period_array;
-            $BV_point = $this->getSum($year_period);
-        }
-        return $BV_point ? $BV_point : 0;
-    }
-
-    protected function getRate($year_period,$policy)
-    {
-        foreach ($year_period as $item){
-            $start = $policy->created_at->addYears($item['start']-1);
-            $end = $policy->created_at->addYears($item['end']-1);
-            if($start->isPast() && $end->isFuture()){
-                return $item['rate'];
-            }
-        }
-        return null;
-    }
-
-    protected function getSum($year_period)
-    {
-        $sum = 0;
-        foreach ($year_period as $item){
-            $sum += $item['rate'];
-        }
-        return $sum;
-    }
-
-    /**** getAttribute ****/
-    public function getYearPeriodAttribute($value)
-    {
-        if(!$value){
-            return [];
-        }
-        return json_decode($value,true);
-    }
-
-    public function getYearPeriodJsonAttribute()
-    {
-        return json_encode($this->year_period);
-    }
-
-    /**** setAttribute ****/
-    public function setYearPeriodAttribute($value)
-    {
-        $this->attributes['year_period'] = json_encode($value);
-    }
 }
