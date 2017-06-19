@@ -169,18 +169,6 @@ class PerformanceController extends InfyOmBaseController
         $employeeRepository->pushCriteria(new RequestCriteria($request))->pushCriteria(new MyEmployeeCriteria())->orderBy('id','desc');
         $employees = $employeeRepository->with('performances')->paginate(15);
 
-        $input = $request->all();
-        if (isset($input['start_at'])){
-            if (!$input['end_at']){
-                $input['end_at'] = Carbon::now()->toDateTimeString();
-            }
-            foreach ($employees as &$employee){
-                $employee['personal_performance'] = $employee->performances()->where('type','personal')->whereBetween('created_at',[$input['start_at'],$input['end_at']])->sum('release_amount');
-                $employee['team_performance'] = $employee->performances()->where('type','team')->whereBetween('created_at',[$input['start_at'],$input['end_at']])->sum('release_amount');
-                $employee['total_performance'] = $employee['personal_performance'] + $employee['team_performance'];
-
-            }
-        }
         return view('performances.indexByEmployee')->with('employees', $employees);
     }
 }

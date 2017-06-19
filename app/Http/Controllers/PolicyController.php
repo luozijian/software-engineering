@@ -82,6 +82,7 @@ class PolicyController extends InfyOmBaseController
             $policy = $employee->policies()->create($input);
 
             $input['release_amount'] = $input['performance'];
+            $input['policy_id'] = $policy->id;
             $performance = $employee->performances()->create($input);
 
             \DB::commit();

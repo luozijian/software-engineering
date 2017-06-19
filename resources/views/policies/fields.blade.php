@@ -6,8 +6,8 @@
 
 <!-- Number Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('products', '产品:') !!}
-    {!! Form::select('products', $products, null, ['class' => 'form-control','required']) !!}
+    {!! Form::label('product_id', '产品:') !!}
+    {!! Form::select('product_id', $products, null, ['class' => 'form-control','required']) !!}
 </div>
 
 <!-- Client Name Field -->

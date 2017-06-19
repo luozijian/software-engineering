@@ -15,8 +15,8 @@
     @foreach($policies as $policy)
         <tr>
             <td>{!! $policy->policy_number !!}</td>
-            <td>{!! $policy->product->name !!}</td>
-            <td>{!! $policy->employee->work_id !!}</td>
+            <td>{!! $policy->product->name or ''!!}</td>
+            <td>{!! $policy->employee->work_id  or '' !!}</td>
             <td>{!! $policy->client_name !!}</td>
             <td>{!! $policy->gender !!}</td>
             <td>{!! $policy->client_phone !!}</td>

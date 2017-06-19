@@ -18,16 +18,6 @@
                                 {!! Form::text('work_id',\Request::get("work_id"), ['class' => 'form-control','data-role'=>'search-item','data-name'=>'work_id','data-express'=>'like']) !!}
                             </div>
 
-                            <div class="form-group">
-                                {!! Form::label('start_at', '开始时间:') !!}
-                                {!! Form::text('start_at',\Request::get("start_at"), ['class' => 'form-control','data-role'=>'date-picker']) !!}
-                            </div>
-
-                            <div class="form-group">
-                                {!! Form::label('end_at', '结束时间:') !!}
-                                {!! Form::text('end_at',\Request::get("end_at"), ['class' => 'form-control','data-role'=>'date-picker']) !!}
-                            </div>
-
                             <input type="hidden" name="search">
                             <input type="hidden" name="searchFields">
                             <button type="button" class="btn btn-success" data-role="search">搜索</button>
@@ -40,6 +30,7 @@
                         <th>员工</th>
                         <th>员工工号</th>
                         <th>职级</th>
+                        <th>职称</th>
                         <th>业绩</th>
                         <th colspan="3">操作</th>
                         </thead>
@@ -49,6 +40,7 @@
                                 <td>{!! $employee->name !!}</td>
                                 <td>{!! $employee->work_id !!}</td>
                                 <td>{!! $employee->job_point !!}</td>
+                                <td>{!! $employee->rank->name !!}</td>
                                 <td>{!! $employee->performance !!}</td>
                                 <td>
                                     <div class='btn-group'>
