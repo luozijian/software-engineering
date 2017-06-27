@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/',function(){
+   return redirect('/admin');
+});
 //后台
 Route::group(["prefix"=>"admin"],function(){
 
