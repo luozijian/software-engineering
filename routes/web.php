@@ -14,6 +14,8 @@
 Route::get('/',function(){
    return redirect('/admin');
 });
+
+Route::get('spider','SpiderController@index');
 //后台
 Route::group(["prefix"=>"admin"],function(){
 
