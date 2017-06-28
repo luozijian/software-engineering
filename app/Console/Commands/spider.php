@@ -13,6 +13,7 @@ class spider extends Command
     private $totalPageCount;
     private $counter        = 1;
     private $concurrency    = 7;  // 同时并发抓取
+    protected $ids = [];
 
     /**
      * The name and signature of the console command.
@@ -51,8 +52,8 @@ class spider extends Command
 
         $requests = function ($total) use ($client) {
             //36273
-            for ($i = 25532;$i <= 25539;$i++) {
-
+            for ($i = 25532;$i <= 36273;$i++) {
+                array_push($this->ids,$i);
                 $uri = 'http://2017.jsjds.org/chaxun/index.php?keys=' . $i;
                 yield function() use ($client, $uri) {
                     return $client->getAsync($uri);
@@ -66,8 +67,9 @@ class spider extends Command
 
                 $res = $response->getBody()->getContents();
 
+
 //                \App\Models\Spider::create(['html'=>$res]);
-                file_put_contents(12,$res);
+                file_put_contents('file/'.($this->ids[$index]).'.html',$res);
 
                 $this->info("请求第 $index 个请求，作品编号: "  );
 
