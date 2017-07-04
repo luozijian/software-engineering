@@ -19,7 +19,7 @@ Route::get('/',function(){
 Route::group(["prefix"=>"admin"],function(){
 
     Route::get('login', 'Auth\LoginController@showLoginForm');
-    Route::post('login', 'Auth\LoginController@login')->middleware('throttle:5');
+    Route::post('login', 'Auth\LoginController@login')->middleware('throttle:11');
     Route::post('logout', 'Auth\LoginController@logout')->name("admin.logout");
 
     Route::get('/', 'AdminController@index')->name("admin.index");
