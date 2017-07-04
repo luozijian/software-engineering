@@ -52,7 +52,7 @@ class spider extends Command
 
         $requests = function ($total) use ($client) {
             //25532-36273
-            for ($i = 29098;$i <= 36273;$i++) {
+            for ($i = 25532;$i <= 36273;$i++) {
                 array_push($this->ids,$i);
                 $uri = 'http://2017.jsjds.org/chaxun/index.php?keys=' . $i;
                 yield function() use ($client, $uri) {
@@ -124,7 +124,9 @@ class spider extends Command
                                 //如果文件夹不存在则创建文件夹
                                 mkdir($dirs[$key], 0777);
                             }
-                            file_put_contents($dirs[$key].$files[$key],$data[$key]);
+                            if (!file_exists($dirs[$key].$files[$key])){
+                                file_put_contents($dirs[$key].$files[$key],$data[$key]);
+                            }
                         }
 
                         $res = str_replace('/dasai/assets','./dasai/assets',$res);
@@ -133,7 +135,9 @@ class spider extends Command
                         foreach ($match[0] as $key => $item){
                             $temp = ltrim($item,'http://');
                             $dirs[] = $path . 'public/files/'.$temp;
-                            file_put_contents($dirs[$key],$data[$key]);
+                            if (!file_exists($dirs[$key])){
+                                file_put_contents($dirs[$key],$data[$key]);
+                            }
                         }
 
                         $res = str_replace('http://','./',$res);
@@ -142,9 +146,7 @@ class spider extends Command
 
                     }
 
-
                     $this->info("请求第".($index+1)."个请求，作品编号:".$this->ids[$index]);
-
 
                 }
 //              else{
