@@ -1,7 +1,8 @@
 /vendor
 /node_modules
 /public/storage
-/file
+/public/files
+/public/dasai
 Homestead.yaml
 Homestead.json
 .env
