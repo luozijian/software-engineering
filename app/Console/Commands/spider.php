@@ -12,7 +12,7 @@ class spider extends Command
 {
     private $totalPageCount;
     private $counter        = 1;
-    private $concurrency    = 10;  // 同时并发抓取
+    private $concurrency    = 16;  // 同时并发抓取
     protected $ids = [];
 
     /**
@@ -52,7 +52,7 @@ class spider extends Command
 
         $requests = function ($total) use ($client) {
             //25532-36273
-            for ($i = 27450;$i <= 36273;$i++) {
+            for ($i = 29098;$i <= 36273;$i++) {
                 array_push($this->ids,$i);
                 $uri = 'http://2017.jsjds.org/chaxun/index.php?keys=' . $i;
                 yield function() use ($client, $uri) {
@@ -77,8 +77,9 @@ class spider extends Command
                 $group = ltrim($g[0]);
                 $group = ltrim($group,'<td colspan="5">') . '--';
 
+
                 $imgs = [];
-                if ($name){
+                if ($name && !strpos($group,'省赛')){
                     $name = $group.$name;
 
 //                    preg_match('/(?<=<td colspan="5">)((\p{Han})+|\w+|\"|\,|\s+|\d+|\《|\》|\-|\·|\—|\（|\）|\\(|\\)|\_|\＋|\－|\'|\！|\？|\，|\の|\：|\、|\?|\。|\】|\【|\!){0,9}/iu',$match[0],$work_name);
@@ -145,10 +146,11 @@ class spider extends Command
                     $this->info("请求第".($index+1)."个请求，作品编号:".$this->ids[$index]);
 
 
-                }else{
-                    \Log::info($this->ids[$index]."\n");
-                    $this->info("请求第".($index+1)."个请求，作品不存在,编号：".$this->ids[$index]);
                 }
+//              else{
+//                    \Log::info($this->ids[$index]);
+//                    $this->info("请求第".($index+1)."个请求，作品不存在,编号：".$this->ids[$index]);
+//                }
 
 
                 $this->countedAndCheckEnded();

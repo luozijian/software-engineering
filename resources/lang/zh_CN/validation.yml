@@ -22,7 +22,7 @@ digits: :attribute 必须是 :digits 位
 digits_between: :attribute 必须在 :min and :max 位之间
 email: :attribute 必须是一个合法的电子邮件地址。
 filled: :attribute 的字段是必填的
-exists: 选定的 :attribute 是无效的
+exists: 选定的 :attribute 是不存在的
 image: :attribute 必须是一个图片 (jpeg, png, bmp 或者 gif)
 in: 选定的 :attribute 是无效的
 integer: :attribute 必须是个整数
@@ -64,7 +64,7 @@ attributes:
   password: 密码
   content: 内容
   name: 名字
-  email: 邮箱
+  email: 用户名
   id_number: 身份证号码
   content: 内容
   student_class_id: 班级
