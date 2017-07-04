@@ -52,7 +52,7 @@ class Spider extends Command
 
         $requests = function ($total) use ($client) {
             //25532-36273
-            for ($i = 25532;$i <= 36273;$i++) {
+            for ($i = 25756;$i <= 36273;$i++) {
                 array_push($this->ids,$i);
                 $uri = 'http://2017.jsjds.org/chaxun/index.php?keys=' . $i;
                 yield function() use ($client, $uri) {
