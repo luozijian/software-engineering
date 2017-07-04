@@ -8,7 +8,7 @@ use GuzzleHttp\Pool;
 use GuzzleHttp\Psr7\Request;
 
 
-class spider extends Command
+class Spider extends Command
 {
     private $totalPageCount;
     private $counter        = 1;
