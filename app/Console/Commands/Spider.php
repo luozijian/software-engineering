@@ -12,7 +12,7 @@ class Spider extends Command
 {
     private $totalPageCount;
     private $counter        = 1;
-    private $concurrency    = 16;  // 同时并发抓取
+    private $concurrency    = 8;  // 同时并发抓取
     protected $ids = [];
 
     /**
@@ -50,15 +50,27 @@ class Spider extends Command
 
         $client = new Client();
 
-        $requests = function ($total) use ($client) {
-            //25532-36273
-            for ($i = 25756;$i <= 36273;$i++) {
-                array_push($this->ids,$i);
-                $uri = 'http://2017.jsjds.org/chaxun/index.php?keys=' . $i;
+        $rejects = file_get_contents(base_path('/storage/logs/laravel.log'));
+
+        preg_match_all('/(?<=local.INFO: )\d+/',$rejects,$matches);
+
+        $requests = function ($total) use ($client,$matches) {
+            //被拒绝的请求重新请求
+            foreach ($matches[0] as $match){
+                array_push($this->ids,$match);
+                $uri = 'http://2017.jsjds.org/chaxun/index.php?keys=' . $match;
                 yield function() use ($client, $uri) {
                     return $client->getAsync($uri);
                 };
             }
+            //25532-36273
+//            for ($i = 36266;$i <= 36290;$i++) {
+//                array_push($this->ids,$i);
+//                $uri = 'http://2017.jsjds.org/chaxun/index.php?keys=' . $i;
+//                yield function() use ($client, $uri) {
+//                    return $client->getAsync($uri);
+//                };
+//            }
         };
 
         $pool = new Pool($client, $requests($this->totalPageCount), [
@@ -79,7 +91,7 @@ class Spider extends Command
 
 
                 $imgs = [];
-                if ($name && !strpos($group,'省赛')){
+                if ($name && !strpos($group,'省赛') && !strpos($group,'省级')){
                     $name = $group.$name;
 
 //                    preg_match('/(?<=<td colspan="5">)((\p{Han})+|\w+|\"|\,|\s+|\d+|\《|\》|\-|\·|\—|\（|\）|\\(|\\)|\_|\＋|\－|\'|\！|\？|\，|\の|\：|\、|\?|\。|\】|\【|\!){0,9}/iu',$match[0],$work_name);
@@ -159,7 +171,7 @@ class Spider extends Command
             },
             'rejected' => function ($reason, $index){
                 $this->error("rejected".$this->ids[$index]);
-                \Log::info($this->ids[$index]." rejected reason: " . $reason);
+                \Log::info($this->ids[$index]);
                 $this->countedAndCheckEnded();
             },
         ]);
